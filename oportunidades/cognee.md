@@ -1,26 +1,23 @@
-# Cognee — organização de conhecimento para IA
+# Cognee: de documentos espalhados a conhecimento conectado
 
-**Fonte oficial:** https://github.com/topoteretes/cognee  
-**Categoria:** Memória de IA  
-**Licença declarada no GitHub:** Apache-2.0  
-**Prioridade de pesquisa:** P1
+**Projeto original:** [topoteretes/cognee](https://github.com/topoteretes/cognee) · **Área:** memória e grafos de conhecimento · **Licença declarada:** Apache-2.0 · **Prioridade editorial:** P1.
 
-## Visão geral
-O Cognee é uma plataforma que transforma documentos e conversas em informação recuperável por agentes de inteligência artificial. Pode combinar representações vetoriais com relações entre conceitos e entidades.
+## Em poucas palavras
+Guardar documentos não é o mesmo que compreender como eles se relacionam. O Cognee oferece uma maneira de transformar textos, código e conversas em conhecimento estruturado que um agente consegue consultar depois.
 
-## Aplicações possíveis
-Busca em documentação técnica, recuperação de contexto de projetos e conexão de informações distribuídas em diversas fontes.
+## Como funciona
+O projeto combina extração de entidades e relações, construção de grafo, índices de busca e recuperação contextual. O README atual descreve também um caminho local com modelos menores; os requisitos exatos dependem da versão e dos extras escolhidos.
 
-## Diferenciais
-Relacionamentos organizados em grafo e processo de ingestão de conhecimento, complementares à recuperação exclusivamente vetorial.
+## Exemplo de aplicação
+Você tem relatórios de incidentes, documentos de API e decisões de arquitetura. Ao perguntar “quais serviços dependem da versão que será alterada?”, um grafo bem alimentado pode conectar componentes que não aparecem juntos no mesmo arquivo.
 
-## Requisitos a verificar
-Compatibilidade com armazenamentos locais, dependências de modelos de embeddings, condições de licença das dependências e custo de indexação.
+## Para quem faz sentido
+Equipes com documentação dispersa, bases técnicas extensas e perguntas que exigem conectar várias fontes. Para pesquisas simples de similaridade, uma solução vetorial menor pode ser suficiente.
 
-## Protocolo de avaliação
-Comparar precisão factual, consultas com múltiplas relações, tempo de ingestão, latência p95, memória utilizada e comportamento após restauração.
+## Limitações e riscos
+A construção do grafo pode ser custosa; relações geradas podem estar erradas ou duplicadas. Confira se a configuração usa modelos locais ou externos, onde os dados persistem, como retirá-los e quais conectores têm acesso aos documentos.
 
-## Riscos
-Dados confidenciais inseridos no índice, relações incorretas, custo de processamento e tratamento de exclusão de informações.
+## Primeira experiência sugerida
+Em ambiente descartável, use 20 textos públicos ou sintéticos, com nomes e relações que você já conhece. Compare respostas multi-etapas, relações incorretas, tempo de ingestão, consumo de memória e exclusão de documentos. **Não utilize dados empresariais como corpus de estreia.**
 
-**Situação:** apenas pesquisa documental. Nenhuma integração ou homologação está implícita. Todos os direitos dos projetos externos permanecem com seus autores.
+**Veja antes de instalar:** [documentação e quickstart oficiais](https://github.com/topoteretes/cognee#readme). Esta ficha resume possibilidades, não validação operacional.

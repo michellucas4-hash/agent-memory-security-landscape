@@ -1,34 +1,23 @@
-# supermemory — ficha de avaliação
+# Supermemory: contexto que acompanha o assistente
 
-**Categoria:** Memória de IA
-**Prioridade inicial:** P1
-**Licença informada pelo GitHub em 23/10/2026:** MIT (verificar arquivos/licença da versão exata)
-**Origem:** [supermemoryai/supermemory](https://github.com/supermemoryai/supermemory)
-**Situação:** pesquisa documental; não é indicação de instalação nem homologação.
+**Origem:** [supermemoryai/supermemory](https://github.com/supermemoryai/supermemory) · **Área:** memória e recuperação · **Licença declarada:** MIT · **Prioridade de pesquisa:** P1.
 
-## O que faz
-Camada de memória e contexto para aplicações de IA. Extrai fatos, atualiza perfis, administra informações temporárias e contradições, realiza busca híbrida e possui conectores para fontes documentais.
+## O problema em linguagem simples
+Uma IA sem memória precisa receber o mesmo contexto repetidamente. O Supermemory busca facilitar a organização, atualização e recuperação de informações relevantes para que aplicações consigam trabalhar com contexto persistente.
 
-## Diferencial técnico
-Combinação de memória de usuário, RAG, perfis dinâmicos e tratamento do ciclo de vida de informações no mesmo ecossistema.
+## Funcionalidades a investigar
+Os componentes do ecossistema incluem memória, recursos de busca e integração com fluxos de agentes. A disponibilidade de cada componente pode variar entre projeto open source, SDK e serviço gerenciado; **não presuma que todas as funcionalidades de nuvem sejam auto-hospedáveis**.
 
-## Como poderia ser útil
-Comparar com soluções locais para atualização de contexto e esquecimento controlado; protótipo com dados sintéticos.
+## Exemplo concreto
+Um usuário informa que prefere respostas curtas. Depois, pede uma explicação detalhada para uma questão técnica. A ferramenta de memória deve preservar a preferência geral sem impedir a instrução atual.
 
-## Requisitos e dependências a conferir
-Verificar separadamente os requisitos da edição local, APIs hospedadas, conectores e modelos opcionais.
+## Quando pode ajudar
+Assistentes personalizados, recuperação de conhecimento e serviços que reutilizam contexto entre conversas.
 
-## Riscos e pontos de segurança
-Fluxo de dados para serviço gerenciado, escopos por cliente, custos de conectores, critérios de esquecimento e dependências de nuvem.
+## Cuidados importantes
+Separar usuários, definir consentimento, retenção e exclusão, controlar integradores externos e checar o custo de embeddings. Evite memorizar credenciais, dados sensíveis ou conteúdo de clientes sem base legítima.
 
-## Benchmark proposto (ainda não executado)
-Taxa de informações recuperadas, resolução de contradição, esquecimento correto, latência, quantidade de tokens e isolamento.
+## Avaliação prática proposta
+Use usuários fictícios e fatos conflitantes. Meça atualização correta de preferências, ausência de vazamento entre usuários, comportamento de esquecimento, tokens economizados e latência. Compare com um baseline simples de memória local.
 
-## Critérios de aprovação
-1. Procedência e licença verificadas no commit/release exato, SBOM e CVEs triados.
-2. Instalação exclusivamente em sandbox descartável, com permissões mínimas e dados sintéticos.
-3. Comparação reprodutível com baseline definido; documentar custos e medições reais.
-4. Evidência de rollback, teste de isolamento e revisão independente antes de integrar qualquer produção.
-
-## Atribuição
-Descrição editorial original de projeto externo. Código e marcas permanecem sob direitos e licenças dos respectivos mantenedores. Não se atribuem downloads, contribuições ou estatísticas do upstream aos curadores deste catálogo.
+**Referência para instalação e detalhes atuais:** [README oficial](https://github.com/supermemoryai/supermemory#readme). Não é uma integração pronta oferecida por este catálogo.

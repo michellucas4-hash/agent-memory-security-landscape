@@ -1,34 +1,20 @@
-# in-toto-golang — ficha de avaliação
+# in-toto-golang: evidências sobre como um artefato foi construído
 
-**Categoria:** Proveniência de builds
-**Prioridade inicial:** P2
-**Licença informada pelo GitHub em 23/10/2026:** NOASSERTION (revisar LICENSE) (verificar arquivos/licença da versão exata)
-**Origem:** [in-toto/in-toto-golang](https://github.com/in-toto/in-toto-golang)
-**Situação:** pesquisa documental; não é indicação de instalação nem homologação.
+**Projeto original:** [in-toto/in-toto-golang](https://github.com/in-toto/in-toto-golang) · **Área:** proveniência de software · **Licença na API GitHub:** NOASSERTION — requer leitura do arquivo LICENSE · **Prioridade:** P2.
 
-## O que faz
-Biblioteca Go do ecossistema in-toto, orientada a metadados e verificação da cadeia de fornecimento de software, conectando passos de build e evidências verificáveis.
+## Para que serve?
+Um pacote pode chegar acompanhado de uma assinatura, mas uma equipe também pode precisar entender **como ele foi produzido**: etapas de construção, materiais utilizados e atestações relacionadas.
 
-## Diferencial técnico
-Permite trabalhar com informações estruturadas de proveniência e integridade de etapas, complementando assinaturas de artefatos.
+## O que encontrar neste projeto
+Implementações em Go ligadas ao ecossistema in-toto, voltadas a evidências verificáveis da cadeia de suprimentos. As APIs disponíveis dependem da versão exata; consulte o repositório antes de copiar exemplos.
 
-## Como poderia ser útil
-Estudar atestações de build e política de verificação para releases públicos auditáveis.
+## Exemplo
+Uma equipe gera um pacote em seu pipeline. Ela quer demonstrar que veio do código e da sequência de etapas esperados, e detectar se uma evidência foi adulterada.
 
-## Requisitos e dependências a conferir
-Toolchain Go, formatos compatíveis e chaves de assinatura protegidas; definir modelo de ameaça antes da integração.
+## Como iniciar a avaliação
+Abra a [documentação original](https://github.com/in-toto/in-toto-golang#readme), confirme a licença de fato e analise exemplos e versões publicadas. Em sandbox isolado, prepare metadados **sintéticos**, altere deliberadamente uma evidência e teste se a verificação rejeita o caso.
 
-## Riscos e pontos de segurança
-Ausência de verificação da licença pela identificação SPDX da API, risco de falsas atestações, gestão de chaves e compatibilidade de formatos.
+## Cuidados
+Não exponha chaves privadas, segredos de build ou descrições de infraestrutura sensível. Defina quem assina, quem verifica e o que cada atestação realmente prova.
 
-## Benchmark proposto (ainda não executado)
-Validação de atestação autêntica versus adulterada, integridade do encadeamento e reprodutibilidade do build.
-
-## Critérios de aprovação
-1. Procedência e licença verificadas no commit/release exato, SBOM e CVEs triados.
-2. Instalação exclusivamente em sandbox descartável, com permissões mínimas e dados sintéticos.
-3. Comparação reprodutível com baseline definido; documentar custos e medições reais.
-4. Evidência de rollback, teste de isolamento e revisão independente antes de integrar qualquer produção.
-
-## Atribuição
-Descrição editorial original de projeto externo. Código e marcas permanecem sob direitos e licenças dos respectivos mantenedores. Não se atribuem downloads, contribuições ou estatísticas do upstream aos curadores deste catálogo.
+**Nota sobre a licença:** `NOASSERTION` é um resultado de metadados do GitHub, não conclusão de que o software não tem licença. Esta ficha não afirma que algum build real foi atestado por nós.

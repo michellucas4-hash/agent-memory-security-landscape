@@ -1,34 +1,20 @@
-# opik — ficha de avaliação
+# Opik: enxergue o caminho percorrido por um agente de IA
 
-**Categoria:** Observabilidade e avaliação
-**Prioridade inicial:** P1
-**Licença informada pelo GitHub em 23/10/2026:** Apache-2.0 (verificar arquivos/licença da versão exata)
-**Origem:** [comet-ml/opik](https://github.com/comet-ml/opik)
-**Situação:** pesquisa documental; não é indicação de instalação nem homologação.
+**Projeto original:** [comet-ml/opik](https://github.com/comet-ml/opik) · **Área:** observabilidade e avaliação de LLMs · **Licença declarada:** Apache-2.0 · **Prioridade de pesquisa:** P1.
 
-## O que faz
-Plataforma para rastreamento de agentes, chamadas de modelos, experimentos, gestão de prompts, avaliações e monitoramento de fluxos RAG/LLM.
+## Por que é interessante?
+Quando um agente erra, olhar apenas a resposta final costuma ser insuficiente. O Opik ajuda a acompanhar a sequência de chamadas e decisões — *traces* — e avaliar resultados com experimentos e conjuntos de testes.
 
-## Diferencial técnico
-Reúne traces, avaliações automatizadas e acompanhamento de experimentos em uma plataforma self-hostable.
+## Funções descritas pelo mantenedor
+Rastreamento de chamadas de modelo e ferramentas, datasets de avaliação, experimentos, dashboards de monitoramento e acompanhamento de prompts. O projeto oferece opções auto-hospedadas e serviço em nuvem; condições e funcionalidades devem ser verificadas por versão.
 
-## Como poderia ser útil
-Comparar com Langfuse e Phoenix para identificar erros de agentes e regressões de resposta antes de promoção.
+## Exemplo de aplicação
+Um assistente responde incorretamente a uma pergunta sobre um documento. Um trace pode mostrar qual trecho recuperou, que chamadas realizou e onde a informação se perdeu. Um experimento reproduzível ajuda a comparar uma correção com o comportamento anterior.
 
-## Requisitos e dependências a conferir
-Servidor Opik ou serviço externo, SDKs e sistema de armazenamento; avaliar requisitos de implantação por versão.
+## Antes de começar
+Consulte o [guia oficial de instalação](https://github.com/comet-ml/opik#readme), escolha ambiente isolado e desligue a coleta de dados reais. Logs de IA podem registrar prompts, dados pessoais e credenciais acidentalmente.
 
-## Riscos e pontos de segurança
-Exposição inadvertida de prompts, logs, dados pessoais e credenciais; aumento do armazenamento e custo operacional.
+## O que medir
+Cobertura de traces, overhead de latência p95, tamanho de armazenamento, taxa de amostragem, precisão das avaliações e qualidade do filtro de dados sensíveis.
 
-## Benchmark proposto (ainda não executado)
-Cobertura de traces, impacto p95, taxa de amostragem, política de redação de dados, rastreabilidade e custo.
-
-## Critérios de aprovação
-1. Procedência e licença verificadas no commit/release exato, SBOM e CVEs triados.
-2. Instalação exclusivamente em sandbox descartável, com permissões mínimas e dados sintéticos.
-3. Comparação reprodutível com baseline definido; documentar custos e medições reais.
-4. Evidência de rollback, teste de isolamento e revisão independente antes de integrar qualquer produção.
-
-## Atribuição
-Descrição editorial original de projeto externo. Código e marcas permanecem sob direitos e licenças dos respectivos mantenedores. Não se atribuem downloads, contribuições ou estatísticas do upstream aos curadores deste catálogo.
+**Atenção:** esta ficha não oferece um painel Opik hospedado e não contém avaliações operacionais próprias.

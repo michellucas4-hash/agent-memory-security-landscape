@@ -1,4 +1,29 @@
+# Generated files
 __pycache__/
 *.pyc
 .venv/
 node_modules/
+dist/
+build/
+.cache/
+
+# Local settings and secrets: never publish
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+
+# Local databases, logs and archives
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.tar
+*.tar.gz
+*.zip
+tmp/

@@ -4,25 +4,42 @@ on:
   push:
     branches: [main]
   pull_request:
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  verify:
+  catalog:
+    name: Validate CSV, documentation and local filters
     runs-on: ubuntu-latest
+    timeout-minutes: 6
     steps:
-      - uses: actions/checkout@v4
-      - name: Documentation integrity
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Confirm published entry points
         run: |
           test -s README.md
           test -s LICENSE
+          test -s SECURITY.md
+          test -s CONTRIBUTING.md
           test -s catalogo/catalogo.md
           test -s catalogo/repositorios.csv
+          test -s docs/primeiro-teste.md
           test -s oportunidades/README.md
-      - name: Run inventory unit tests
+
+      - name: Check Python syntax
+        run: python3 -m compileall -q scripts tests
+
+      - name: Validate inventory, links and CLI behavior
         run: python3 -m unittest discover -s tests -v
-      - name: Check offline filters
+
+      - name: Smoke test user commands
         run: |
-          python3 scripts/filter_catalog.py --category memoria_ia --output json > /dev/null
-          python3 scripts/filter_catalog.py --require-license-review > /dev/null
+          python3 scripts/filter_catalog.py --help > /dev/null
+          python3 scripts/filter_catalog.py --list-categories > /dev/null
+          python3 scripts/filter_catalog.py --category memoria_ia --priority P1 > /dev/null
+          python3 scripts/filter_catalog.py --sort stars --limit 10 > /dev/null
+          python3 scripts/filter_catalog.py --require-license-review --output json > /dev/null
+          python3 scripts/filter_catalog.py --category seguranca --output csv > /dev/null

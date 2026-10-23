@@ -1,34 +1,23 @@
-# SkillSpector — ficha de avaliação
+# NVIDIA SkillSpector: revise uma skill antes de confiá-la ao agente
 
-**Categoria:** Segurança de agentes
-**Prioridade inicial:** P1
-**Licença informada pelo GitHub em 23/10/2026:** Apache-2.0 (verificar arquivos/licença da versão exata)
-**Origem:** [NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector)
-**Situação:** pesquisa documental; não é indicação de instalação nem homologação.
+**Projeto original:** [NVIDIA/SkillSpector](https://github.com/NVIDIA/SkillSpector) · **Área:** segurança de skills de IA · **Licença declarada:** Apache-2.0 · **Prioridade:** P1.
 
-## O que faz
-Scanner de segurança de habilidades (skills) e pacotes usados por agentes de IA. Procura indicadores de prompt injection, exfiltração, permissões excessivas e problemas de cadeia de suprimentos.
+## O problema que tenta resolver
+Uma skill pode parecer apenas um conjunto de instruções, mas também pode pedir permissões excessivas, executar código perigoso ou tentar enviar dados para fora do ambiente. Antes de instalar uma extensão num agente com acesso a arquivos, vale inspecioná-la.
 
-## Diferencial técnico
-Voltado especificamente ao risco de instalar skills de agentes, com análise estática e recursos opcionais de avaliação semântica.
+## O que oferece
+Segundo o projeto oficial, o SkillSpector analisa skills e extensões procurando indícios de **prompt injection, exfiltração, falhas de segurança e riscos de dependências**. Possui análise estática e análise semântica opcional por modelo; pode produzir relatórios estruturados. Ele **não executa** a skill inspecionada.
 
-## Como poderia ser útil
-Utilizar como referência de triagem antes de qualquer habilitação de skill ou plugin proveniente de terceiros.
+## Exemplo prático
+Você recebe uma skill que promete organizar arquivos. O scanner pode identificar instruções que tentam enviar esses arquivos para um serviço remoto. Um alerta assim pede investigação humana antes de qualquer instalação.
 
-## Requisitos e dependências a conferir
-Verificar modos estático e semântico, modelos utilizados, formatos de entrada e política de execução.
+## Como testar com cuidado
+Leia o [quickstart oficial](https://github.com/NVIDIA/SkillSpector#readme) e use uma **skill sintética ou publicamente autorizada**, em ambiente descartável. Para evitar envio do conteúdo a modelos externos, examine o modo estático `--no-llm`; verifique que consultas de dependências ao OSV.dev ainda podem transmitir nomes e versões dos pacotes.
 
-## Riscos e pontos de segurança
-Scanner não garante segurança, pode não detectar ataques inéditos; análise LLM opcional pode enviar código a terceiros; preservar sandbox.
+## Limites importantes
+Um relatório sem alertas **não certifica a segurança**; o projeto é análise preventiva, não isolamento de execução. Confirme permissões de rede, versão instalada, padrões suportados e privacidade antes do uso corporativo.
 
-## Benchmark proposto (ainda não executado)
-Detecção em corpus sintético controlado, falsos positivos, duração por pacote e rastreio de evidências.
+## O que medir
+Detecção de casos conhecidos em corpus sintético, falsos positivos, tempo por skill e decisões efetivamente revisáveis.
 
-## Critérios de aprovação
-1. Procedência e licença verificadas no commit/release exato, SBOM e CVEs triados.
-2. Instalação exclusivamente em sandbox descartável, com permissões mínimas e dados sintéticos.
-3. Comparação reprodutível com baseline definido; documentar custos e medições reais.
-4. Evidência de rollback, teste de isolamento e revisão independente antes de integrar qualquer produção.
-
-## Atribuição
-Descrição editorial original de projeto externo. Código e marcas permanecem sob direitos e licenças dos respectivos mantenedores. Não se atribuem downloads, contribuições ou estatísticas do upstream aos curadores deste catálogo.
+**Status:** pesquisa de segurança e proposta de teste, não endosso de instalação.

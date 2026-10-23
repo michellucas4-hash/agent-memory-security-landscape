@@ -1,34 +1,23 @@
-# bandit — ficha de avaliação
+# Bandit: perguntas de segurança antes do código Python chegar à produção
 
-**Categoria:** Segurança Python
-**Prioridade inicial:** P0
-**Licença informada pelo GitHub em 23/10/2026:** Apache-2.0 (verificar arquivos/licença da versão exata)
-**Origem:** [PyCQA/bandit](https://github.com/PyCQA/bandit)
-**Situação:** pesquisa documental; não é indicação de instalação nem homologação.
+**Projeto original:** [PyCQA/bandit](https://github.com/PyCQA/bandit) · **Área:** análise estática Python · **Licença declarada:** Apache-2.0 · **Prioridade editorial:** P0.
 
-## O que faz
-Ferramenta de análise estática que inspeciona AST de código Python para localizar padrões comuns de insegurança, como subprocessos perigosos, criptografia problemática e credenciais inseridas no código.
+## O que ele faz?
+O Bandit examina a estrutura do código Python sem precisar executar o programa. Seus plugins detectam **padrões que merecem revisão**, por exemplo chamadas perigosas ou opções de segurança inadequadas.
 
-## Diferencial técnico
-Baixo custo de adoção em pipelines de revisão de código Python; resultados estruturáveis para CI.
+## Exemplo simples
+Um colaborador propõe uma alteração que chama programas externos. Antes da aprovação, o Bandit pode sinalizar que aquela forma de chamada precisa ser revisada. Nem toda ocorrência é vulnerabilidade; a equipe deve analisar o contexto.
 
-## Como poderia ser útil
-Adicionar como verificação isolada de segurança em projetos Python públicos e exemplos reproduzíveis.
+## Para quem serve
+Projetos Python e pipelines de revisão de pull requests que querem tornar problemas recorrentes visíveis antes do deploy.
 
-## Requisitos e dependências a conferir
-Interpretador Python compatível e instalação controlada somente em ambiente de CI/homologação.
+## Como testar
+Consulte [instalação e comandos oficiais](https://github.com/PyCQA/bandit#readme), crie um ambiente virtual descartável e use **um arquivo Python de exemplo que você controla**. Execute a ferramenta no exemplo, interprete os alertas e confira manualmente se fazem sentido.
 
-## Riscos e pontos de segurança
-Falsos positivos e falsos negativos; não substitui threat modeling, scanner de dependências, pentest ou revisão humana.
+## Medições úteis
+Tempo de verificação, cobertura dos arquivos, taxa de alertas realmente relevantes e facilidade de integrar o resultado ao CI.
 
-## Benchmark proposto (ainda não executado)
-Tempo de varredura, resultados confirmados por severidade, cobertura de arquivos e regressões no CI.
+## Limitações
+Bandit não detecta todas as vulnerabilidades, não substitui auditoria humana, escaneamento de dependências, testes dinâmicos ou revisão de permissões.
 
-## Critérios de aprovação
-1. Procedência e licença verificadas no commit/release exato, SBOM e CVEs triados.
-2. Instalação exclusivamente em sandbox descartável, com permissões mínimas e dados sintéticos.
-3. Comparação reprodutível com baseline definido; documentar custos e medições reais.
-4. Evidência de rollback, teste de isolamento e revisão independente antes de integrar qualquer produção.
-
-## Atribuição
-Descrição editorial original de projeto externo. Código e marcas permanecem sob direitos e licenças dos respectivos mantenedores. Não se atribuem downloads, contribuições ou estatísticas do upstream aos curadores deste catálogo.
+**Status nesta coleção:** referência documentada para estudo. O catálogo não executa Bandit quando você roda seu filtro de repositórios.

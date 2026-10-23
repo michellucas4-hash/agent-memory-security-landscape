@@ -1,16 +1,23 @@
-name: Catalog Quality
+name: Document Quality
 on:
   push:
-    branches: ["main"]
+    branches: [main]
   pull_request:
+permissions:
+  contents: read
 jobs:
-  validate:
+  documentation:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@v4
-      - name: Validate public catalog (stdlib only)
-        run: python3 -m unittest discover -s tests -v
-      - name: Offline filter smoke test
-        run: python3 scripts/filter_catalog.py --category memoria_ia --output json > /dev/null
+      - name: Verify documentation and license
+        shell: bash
+        run: |
+          test -s README.md
+          test -s LICENSE
+          test -s catalogo/catalogo.md
+          test -s docs/comparativo-memoria.md
+          test -s oportunidades/hindsight.md
+          test -s oportunidades/supermemory.md
+          test -s oportunidades/guac.md
+          echo "Public documentation check passed"

@@ -1,34 +1,23 @@
-# hindsight — ficha de avaliação
+# Hindsight: memória que considera o contexto e o tempo
 
-**Categoria:** Memória de IA
-**Prioridade inicial:** P1
-**Licença informada pelo GitHub em 23/10/2026:** MIT (verificar arquivos/licença da versão exata)
-**Origem:** [vectorize-io/hindsight](https://github.com/vectorize-io/hindsight)
-**Situação:** pesquisa documental; não é indicação de instalação nem homologação.
+**Projeto original:** [vectorize-io/hindsight](https://github.com/vectorize-io/hindsight) · **Área:** memória de agentes · **Licença declarada:** MIT · **Nossa prioridade de pesquisa:** P1.
 
-## O que faz
-Motor de memória persistente para agentes. Processa eventos e conversas por **retain**, recupera por **recall** (busca semântica, lexical/BM25, entidades/grafo e temporalidade) e sintetiza respostas por **reflect**. Permite isolamento em bancos de memória (banks) por agente, cliente ou projeto.
+## Em poucas palavras
+Imagine um assistente que lembra de uma decisão antiga, mas percebe que ela foi substituída por outra ontem. O Hindsight pesquisa informações guardadas e busca organizá-las com contexto temporal, em vez de tratar toda lembrança como uma nota solta.
 
-## Diferencial técnico
-Relacionamentos temporais e consolidação de observações, além de integração documentada com PostgreSQL/pgvector.
+## O que o projeto oferece
+A arquitetura documentada pelo autor usa operações de retenção (**retain**), recuperação (**recall**) e reflexão (**reflect**). Pode combinar busca semântica, busca lexical, entidades e contexto temporal. Consulte a documentação original para ver as APIs e requisitos da versão escolhida.
 
-## Como poderia ser útil
-Estudar como camada de memória episódica que preserva origem, sequência temporal e evidências de decisões; comparar com pgvector puro e Graphiti.
+## Exemplo de uso
+Em um projeto de software, a equipe registra que uma integração foi planejada, depois adiada e finalmente aprovada. A pergunta “qual é a decisão mais recente e por quê?” exige recuperar a sequência inteira, não somente o registro com palavras parecidas.
 
-## Requisitos e dependências a conferir
-PostgreSQL/pgvector e serviço de processamento; algumas operações dependem de modelos de linguagem e embeddings. Confirmar topologia exata por versão.
+## Quando vale pesquisar
+Memória persistente entre sessões, histórico de decisões e sistemas que precisam distinguir **informação atual** de informações superadas.
 
-## Riscos e pontos de segurança
-Migrações automáticas, consumo de banco e embeddings, contradições, uso de APIs de terceiros, retenção de informações pessoais.
+## Cuidados antes de adotar
+O processamento pode consumir banco, modelos de embedding e inferência. Verifique se dados vão a provedores externos, como funciona a exclusão e qual componente controla a persistência. Use apenas uma base de testes isolada.
 
-## Benchmark proposto (ainda não executado)
-Recall@k por pergunta temporal, acerto da origem, p95, RAM, custo por 1.000 interações e restauração do banco.
+## Como avaliar de forma reproduzível
+Crie 50 fatos sintéticos com datas, atualizações e contradições. Pergunte por decisões atuais, referências históricas e fatos que deveriam ter sido esquecidos. Meça acerto, citações de origem, latência p95, RAM e custo por consulta; compare com uma busca simples em PostgreSQL/pgvector.
 
-## Critérios de aprovação
-1. Procedência e licença verificadas no commit/release exato, SBOM e CVEs triados.
-2. Instalação exclusivamente em sandbox descartável, com permissões mínimas e dados sintéticos.
-3. Comparação reprodutível com baseline definido; documentar custos e medições reais.
-4. Evidência de rollback, teste de isolamento e revisão independente antes de integrar qualquer produção.
-
-## Atribuição
-Descrição editorial original de projeto externo. Código e marcas permanecem sob direitos e licenças dos respectivos mantenedores. Não se atribuem downloads, contribuições ou estatísticas do upstream aos curadores deste catálogo.
+**Comece pela fonte oficial:** [README e instruções do mantenedor](https://github.com/vectorize-io/hindsight#readme). Nenhum teste funcional desse projeto é reivindicado por este catálogo; a proposta acima é um roteiro de avaliação.

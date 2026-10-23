@@ -1,23 +1,28 @@
-name: Document Quality
+name: Catalog Quality
+
 on:
   push:
     branches: [main]
   pull_request:
+
 permissions:
   contents: read
+
 jobs:
-  documentation:
+  verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify documentation and license
-        shell: bash
+      - name: Documentation integrity
         run: |
           test -s README.md
           test -s LICENSE
           test -s catalogo/catalogo.md
-          test -s docs/comparativo-memoria.md
-          test -s oportunidades/hindsight.md
-          test -s oportunidades/supermemory.md
-          test -s oportunidades/guac.md
-          echo "Public documentation check passed"
+          test -s catalogo/repositorios.csv
+          test -s oportunidades/README.md
+      - name: Run inventory unit tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Check offline filters
+        run: |
+          python3 scripts/filter_catalog.py --category memoria_ia --output json > /dev/null
+          python3 scripts/filter_catalog.py --require-license-review > /dev/null

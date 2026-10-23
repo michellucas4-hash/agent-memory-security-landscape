@@ -1,34 +1,23 @@
-# honcho — ficha de avaliação
+# Honcho: memória sobre participantes, não apenas mensagens
 
-**Categoria:** Memória de IA
-**Prioridade inicial:** P2
-**Licença informada pelo GitHub em 23/10/2026:** AGPL-3.0 (verificar arquivos/licença da versão exata)
-**Origem:** [plastic-labs/honcho](https://github.com/plastic-labs/honcho)
-**Situação:** pesquisa documental; não é indicação de instalação nem homologação.
+**Projeto original:** [plastic-labs/honcho](https://github.com/plastic-labs/honcho) · **Área:** memória multiagente · **Licença declarada:** AGPL-3.0 · **Prioridade editorial:** P2.
 
-## O que faz
-Infraestrutura de memória contextual com organização por workspaces, peers, sessões e mensagens. Produz representações de participantes, raciocina sobre interações e permite consultas e busca.
+## Em poucas palavras
+Em uma conversa com vários agentes, não basta lembrar o texto: importa saber **quem afirmou algo**, em qual sessão e qual contexto pode ser reutilizado. O Honcho organiza mensagens e representações de participantes.
 
-## Diferencial técnico
-Modelagem explícita de quem sabe o quê sobre pessoas, agentes e sessões, com processamento de memória em segundo plano.
+## Conceitos centrais
+A documentação apresenta **workspaces**, **peers** (participantes) e **sessions**. Uma sessão guarda a interação; representações de participantes podem resumir informações através de sessões, respeitando os limites de isolamento configurados.
 
-## Como poderia ser útil
-Benchmark em ambientes de múltiplos agentes e contextos compartilhados, sem importar dados reais.
+## Exemplo de aplicação
+Um agente de suporte e outro de planejamento colaboram num projeto fictício. Ambos precisam preservar fatos sobre o projeto sem misturar a memória de duas organizações diferentes. O limite entre workspaces precisa ser comprovado por teste, nunca suposto.
 
-## Requisitos e dependências a conferir
-Servidor/CLI/SDKs do projeto; validar necessidades de backend, filas, modelos e forma de implantação.
+## O que avaliar primeiro
+Segregação entre workspaces e sessões, configurações de observação, atualização de representações, processamento assíncrono e dependências de inferência.
 
-## Riscos e pontos de segurança
-Licença AGPL-3.0 exige revisão jurídica antes de integração/distribuição em rede; processamento assíncrono e segregação de tenants.
+## Atenção especial à licença
+A **AGPL-3.0** exige avaliação jurídica cuidadosa antes de distribuição ou prestação de serviço em rede com modificações. Além disso, memória de pessoas pode exigir regras de privacidade, consentimento e exclusão.
 
-## Benchmark proposto (ainda não executado)
-Acurácia por agente, isolamento cross-tenant, tempo de consolidação, custo de inferência e repetibilidade.
+## Teste recomendado
+Crie dois workspaces sintéticos com participantes homônimos. Registre fatos incompatíveis, consulte a memória de cada ambiente e procure qualquer vazamento cruzado. Registre latência, custo, qualidade das representações e comportamento após reinício.
 
-## Critérios de aprovação
-1. Procedência e licença verificadas no commit/release exato, SBOM e CVEs triados.
-2. Instalação exclusivamente em sandbox descartável, com permissões mínimas e dados sintéticos.
-3. Comparação reprodutível com baseline definido; documentar custos e medições reais.
-4. Evidência de rollback, teste de isolamento e revisão independente antes de integrar qualquer produção.
-
-## Atribuição
-Descrição editorial original de projeto externo. Código e marcas permanecem sob direitos e licenças dos respectivos mantenedores. Não se atribuem downloads, contribuições ou estatísticas do upstream aos curadores deste catálogo.
+**Leitura recomendada:** [documentação e repositório oficial](https://github.com/plastic-labs/honcho#readme). Sem instalação nem homologação realizada aqui.
